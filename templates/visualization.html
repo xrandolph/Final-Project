@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campaign Visualization</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Campaign Metrics Visualization</h1>
+        
+        <!-- Display campaign details -->
+        <div class="campaign-details">
+            <h2>{{ campaign.name }}</h2>
+            <p><strong>Start Date:</strong> {{ campaign.start_date }}</p>
+            <p><strong>End Date:</strong> {{ campaign.end_date }}</p>
+            <p><strong>Engagement Rate:</strong> {{ campaign.engagement_rate }}%</p>
+            <p><strong>Reach:</strong> {{ campaign.reach }}</p>
+            <p><strong>Conversion Rate:</strong> {{ campaign.conversion_rate }}%</p>
+        </div>
+
+        <!-- Display the campaign performance chart -->
+        <div class="chart-container">
+            <h3>Campaign Metrics Overview</h3>
+            <img src="data:image/png;base64,{{ img_data }}" alt="Campaign Metrics Chart">
+        </div>
+
+        <!-- Button to go back to the homepage -->
+        <div class="back-button">
+            <a href="{{ url_for('index') }}">Back to Campaign List</a>
+        </div>
+    </div>
+</body>
+</html>

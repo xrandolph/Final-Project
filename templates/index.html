@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campaign Insights Manager</title>
+</head>
+<body>
+    <h1>Campaign Insights Manager</h1>
+    <a href="{{ url_for('add_campaign') }}">Add New Campaign</a>
+
+    <h2>Campaigns</h2>
+    <ul>
+        {% for campaign in campaigns %}
+        <li>
+            <strong>{{ campaign.name }}</strong> - Start Date: {{ campaign.start_date }} - End Date: {{ campaign.end_date }}
+            <br>
+            Engagement: {{ campaign.engagement_rate }} - Reach: {{ campaign.reach }} - Conversion Rate: {{ campaign.conversion_rate }}
+            <br>
+            <a href="{{ url_for('visualize_campaign', id=campaign.id) }}">Visualize Metrics</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
