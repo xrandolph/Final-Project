@@ -1,9 +1,12 @@
 from app import create_app
+from flask import redirect, url_for
 
-# Create the app instance using the app factory function
 app = create_app()
 
-# Run the application
+# Add a route for root to redirect to /campaigns/
+@app.route('/')
+def redirect_to_campaigns():
+    return redirect(url_for('campaign_bp.home'))  # Redirect to the home page in the campaign blueprint
+
 if __name__ == '__main__':
     app.run(debug=True)
-

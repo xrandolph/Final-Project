@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Campaign Insights Manager</h1>
-    <a href="{{ url_for('add_campaign') }}">Add New Campaign</a>
+    <a href="{{ url_for('campaign_bp.add_campaign') }}">Add New Campaign</a>
 
     <h2>Campaigns</h2>
     <ul>
@@ -17,7 +17,7 @@
             <br>
             Engagement: {{ campaign.engagement_rate }} - Reach: {{ campaign.reach }} - Conversion Rate: {{ campaign.conversion_rate }}
             <br>
-            <a href="{{ url_for('visualize_campaign', id=campaign.id) }}">Visualize Metrics</a>
+            <a href="{{ url_for('campaign_bp.visualize_campaign', id=campaign.id) }}">Visualize Metrics</a>
         </li>
         {% endfor %}
     </ul>
