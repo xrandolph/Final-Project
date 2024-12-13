@@ -2,3 +2,4 @@ Flask
 SQLAlchemy
 matplotlib
 pandas
+flask_sqlalchemy
