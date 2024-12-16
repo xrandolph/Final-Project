@@ -9,4 +9,4 @@ def redirect_to_campaigns():
     return redirect(url_for('campaign_bp.home'))  # Redirect to the home page in the campaign blueprint
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,  threaded=False)

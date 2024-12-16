@@ -1,10 +1,15 @@
+# import matplotlib
+# matplotlib.use('Agg')  # Use non-GUI backend
+# import matplotlib.pyplot as plt
+
 from flask import Blueprint, render_template, request, redirect, url_for
 from models import Campaign
 from db import db  # Ensure db is correctly imported from the db.py module
 from datetime import datetime  # Import datetime module
-import matplotlib.pyplot as plt
+
 from io import BytesIO
 import base64
+import plotly.graph_objects as go
 
 # Define Blueprint
 campaign_bp = Blueprint('campaign_bp', __name__)
@@ -77,27 +82,60 @@ def add_campaign():
 
     return render_template('campaign_form.html')  # Render the campaign form for GET requests
 
+
 @campaign_bp.route('/visualize/<int:id>')
 def visualize_campaign(id):
-    campaign = Campaign.query.get(id)  # Fetch the campaign based on ID
+    campaign = Campaign.query.get(id)
+    if not campaign:
+        return "Campaign not found", 404
+
+    # Prepare data for visualization
+    metrics = ['Engagement Rate', 'Reach', 'Conversion Rate']
+    values = [campaign.engagement_rate, campaign.reach, campaign.conversion_rate]
+
+    # Create the bar chart using Plotly
+    fig = go.Figure([go.Bar(x=metrics, y=values, marker_color=['skyblue', 'lightgreen', 'lightcoral'])])
+    fig.update_layout(
+        title=f"Campaign: {campaign.name} - Performance Overview",
+        xaxis_title="Metrics",
+        yaxis_title="Values"
+    )
+
+    # Return the Plotly figure as HTML
+    return fig.to_html()
+
+@campaign_bp.route('/delete/<int:id>', methods=['POST'])
+def delete_campaign(id):
+    """Delete a campaign by ID."""
+    campaign = Campaign.query.get(id)
     if campaign:
-        # Prepare data for visualization
-        metrics = ['Engagement Rate', 'Reach', 'Conversion Rate']
-        values = [campaign.engagement_rate, campaign.reach, campaign.conversion_rate]
-
-        # Create the bar chart
-        fig, ax = plt.subplots()
-        ax.bar(metrics, values)
-
-        # Save the chart to a bytes buffer
-        img = BytesIO()
-        plt.savefig(img, format='png')
-        img.seek(0)
-        plt.close(fig)  # Close the figure to release resources
-
-        # Encode the image to base64
-        img_base64 = base64.b64encode(img.getvalue()).decode('utf-8')
-
-        return render_template('visualization.html', img_base64=img_base64, campaign=campaign)
-
+        db.session.delete(campaign)
+        db.session.commit()
+        return redirect(url_for('campaign_bp.home'))
     return "Campaign not found", 404
+
+@campaign_bp.route('/update/<int:id>', methods=['GET', 'POST'])
+def update_campaign(id):
+    """Update details of an existing campaign."""
+    campaign = Campaign.query.get(id)
+    if not campaign:
+        return "Campaign not found", 404
+
+    if request.method == 'POST':
+        try:
+            # Update campaign details
+            campaign.name = request.form['name']
+            campaign.start_date = datetime.strptime(request.form['start_date'], '%Y-%m-%d').date()
+            campaign.end_date = datetime.strptime(request.form['end_date'], '%Y-%m-%d').date()
+            campaign.engagement_rate = float(request.form['engagement_rate'])
+            campaign.reach = int(request.form['reach'])
+            campaign.conversion_rate = float(request.form['conversion_rate'])
+            campaign.client_id = int(request.form['client_id'])
+
+            db.session.commit()
+            return redirect(url_for('campaign_bp.home'))
+
+        except ValueError as e:
+            return f"Invalid input: {str(e)}", 400
+
+    return render_template('campaign_form.html', campaign=campaign)
