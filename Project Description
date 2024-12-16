@@ -1,0 +1,79 @@
+Group C: Maiwase Tembo and Xavier Dylan Randolph
+Module 8 Final Project Update
+
+Team Member Participation ("Full participation/Participated" or "No participation/Did not participate"): 
+Maiwase Tembo: Full participation
+Xavier Dylan Randolph:Full Participation
+
+Final Project Documentation 12/14/24
+
+We are actively managing our tasks using the Kanban board, which has proven to be a great way to track our progress and prioritize work. Here's a summary of our achievements and ongoing work:
+Completed Tasks:
+We have successfully designated a project team leader and described member roles.
+The initial Python classes (Client, Campaign, and Analytics) have been written to form the core of our system. These classes allow us to manage client details, handle campaign data, and generate analytical insights.
+We set up a team GitHub repository, which has been used to collaborate effectively.
+A mode of communication has been established for the team, ensuring we can work cohesively.
+The Kanban board has been fully utilized to organize and distribute tasks.
+Tasks such as implementing campaign data entry forms, adding a REST API to retrieve campaign data, and creating a web interface are next on our priority list. These features will be crucial for interacting with and visualizing the campaign metrics
+The team is currently testing the Python classes to ensure they work as intended. This includes running unit tests and debugging any issues with the logic or functionality.
+In Progress:
+n/a 
+Backlog Items:
+n/a
+Team Member Contributions:
+Xavier Dylan Randolph has worked on specific code files, including:
+app.py (to manage the core functionality of the app).
+routes (for defining API endpoints).
+models.py (to handle data structure and storage).
+Templates and static files for the user interface.
+Maiwase Tembo has worked on specific code files, including:
+routes (for defining API endpoints).
+README
+Functionality testing and enhancements
+Challenges and Next Steps:
+Creating a competitive and responsive UI
+
+Communication Plan
+Microsoft Teams 
+Our team used Microsoft Teams as our primary communication tool for this project. A dedicated project channel has been created, with links to the GitHub repository, Google Doc, and Trello board shared within the channel for easy access. Team members will use this channel to post updates, share progress, and coordinate weekly meetings. All key resources and discussions will be centralized here to ensure clear communication and streamline collaboration.
+
+Project Description
+
+HubSpot
+Our team chose HubSpot, a well-established digital marketing and customer relationship management (CRM) platform. HubSpot helps businesses of all sizes manage and execute their digital marketing efforts, including social media campaigns, email marketing, and content strategy.
+
+Scope of the System
+The system we will develop, named Campaign Insights Manager, will focus on providing a streamlined way to track and analyze digital marketing campaigns for HubSpot's marketing teams and clients. It will handle essential campaign tracking metrics, manage client information, and produce data-driven performance reports. The system will be designed to manage multiple campaigns simultaneously, capturing metrics like engagement rates, reach, and conversions. Additionally, it will support simple visualizations to present key performance indicators (KPIs) clearly. The scope is limited to these core functionalities to ensure completion within the course timeline.
+
+Purpose of the System
+The Campaign Insights Manager system will accomplish the following tasks:
+
+Campaign Tracking: Allow marketing teams to log campaign details, monitor real-time performance, and track metrics such as engagement, reach, and conversion rates.
+Client Management: Store and organize client information relevant to each campaign, providing quick access to client data, campaign preferences, and history.
+Performance Reporting: Generate summarized reports with campaign insights and basic visualizations to help HubSpot’s teams review and present results to clients efficiently.
+
+Impact
+This system will enable HubSpot to better organize their marketing data, improve campaign oversight, and support clearer, data-supported client communications.
+
+Team Links
+
+Github Repository URL
+https://github.com/xrandolph/Final-Project
+
+Trello Board URL
+https://trello.com/b/qL14mA2Z/software-dev-using-pyt
+
+
+Team Member Roles
+
+Team Lead: Maiwase Tembo
+In addition to writing code for the project, the team leader will oversee the entire project, ensuring that each team member is on track with their assigned tasks and that deadlines are met. This role will involve creating and managing the project timeline using a Kanban board, coordinating weekly meetings, and keeping everyone informed of any changes or updates. The leader will also communicate with the instructor, presenting the team’s progress, proposal, and any questions or issues that arise.
+
+Lead Developer: Xavier Dylan Randolph
+The lead developer will manage the technical aspects of the project, including setting up the coding environment, implementing core functionality, and integrating different components. They will be responsible for developing the primary architecture of the system, including classes, collections, and interfaces, and ensuring that the codebase runs efficiently without errors. This role also includes overseeing the integration of the graphical user interface and implementing features required by the proposal.
+
+Documentation and Testing Lead: Maiwase Tembo
+This Documentation and Testing Lead will focus on writing the documentation, creating a class diagram, and thoroughly testing the code to ensure it runs smoothly without syntax or runtime errors. They will create the proposal, document the system requirements, user manual, and sample output. Additionally, they will set up test cases for each component, identify any issues, and collaborate with the developers to fix bugs.
+
+
+
