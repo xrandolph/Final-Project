@@ -3,33 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Campaign</title>
+    <title>{{ campaign.name if campaign else "Add New Campaign" }}</title>
 </head>
 <body>
-    <h1>Add New Campaign</h1>
-    <form method="POST">
+    <h1>{{ campaign.name if campaign else "Add New Campaign" }}</h1>
+    <form method="POST" action="{{ url_for('campaign_bp.update_campaign', id=campaign.id) if campaign else url_for('campaign_bp.add_campaign') }}">
         <label for="name">Campaign Name:</label><br>
-        <input type="text" id="name" name="name" required><br><br>
+        <input type="text" id="name" name="name" value="{{ campaign.name if campaign else '' }}" required><br><br>
         
         <label for="start_date">Start Date:</label><br>
-        <input type="date" id="start_date" name="start_date" required><br><br>
+        <input type="date" id="start_date" name="start_date" value="{{ campaign.start_date.strftime('%Y-%m-%d') if campaign else '' }}" required><br><br>
         
         <label for="end_date">End Date:</label><br>
-        <input type="date" id="end_date" name="end_date" required><br><br>
+        <input type="date" id="end_date" name="end_date" value="{{ campaign.end_date.strftime('%Y-%m-%d') if campaign else '' }}" required><br><br>
         
         <label for="engagement_rate">Engagement Rate:</label><br>
-        <input type="number" id="engagement_rate" name="engagement_rate" step="0.01" required><br><br>
+        <input type="number" id="engagement_rate" name="engagement_rate" step="0.01" value="{{ campaign.engagement_rate if campaign else '' }}" required><br><br>
         
         <label for="reach">Reach:</label><br>
-        <input type="number" id="reach" name="reach" required><br><br>
+        <input type="number" id="reach" name="reach" value="{{ campaign.reach if campaign else '' }}" required><br><br>
         
         <label for="conversion_rate">Conversion Rate:</label><br>
-        <input type="number" id="conversion_rate" name="conversion_rate" step="0.01" required><br><br>
+        <input type="number" id="conversion_rate" name="conversion_rate" step="0.01" value="{{ campaign.conversion_rate if campaign else '' }}" required><br><br>
         
         <label for="client_id">Client ID:</label><br>
-        <input type="number" id="client_id" name="client_id" required><br><br>
+        <input type="number" id="client_id" name="client_id" value="{{ campaign.client_id if campaign else '' }}" required><br><br>
         
-        <input type="submit" value="Add Campaign">
+        <input type="submit" value="{{ campaign.name if campaign else "Add Campaign" }}">
     </form>
 </body>
 </html>
